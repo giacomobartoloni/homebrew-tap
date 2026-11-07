@@ -10,6 +10,14 @@ brew install --cask giacomobartoloni/tap/mathboard
 
 The cask selects the appropriate DMG for Apple Silicon (`aarch64`) or Intel (`x64`), verifies its SHA-256 checksum, and installs `MathBoard.app` in the standard macOS Applications directory.
 
+MathBoard is currently an unsigned, unnotarized beta, so macOS Gatekeeper may block its first launch. Prefer macOS's per-app **System Settings > Privacy & Security > Open Anyway** flow. If you trust the installed build and explicitly choose to remove the downloaded-app quarantine attribute for MathBoard only, run:
+
+```sh
+sudo xattr -r -d com.apple.quarantine "/Applications/MathBoard.app"
+```
+
+**Security note:** This command bypasses macOS quarantine-based checks for this app; it does not sign or notarize MathBoard. Do not use it for software you have not verified or on a device whose security policy prohibits it.
+
 ## Update
 
 ```sh
@@ -31,7 +39,7 @@ This tap does not define a `zap` action, so uninstalling will not intentionally 
 
 MathBoard's current macOS desktop builds are **unsigned public betas**: they are not signed with an Apple Developer ID certificate and are not notarized by Apple. Installing via Homebrew does **not** change that trust status or bypass macOS Gatekeeper.
 
-Download only from the official release referenced by the cask. If macOS prevents the first launch, review the project's [unsigned beta installation guidance](https://github.com/giacomobartoloni/mathboard/blob/main/docs/desktop/UNSIGNED_BETA.md) and [Apple's per-app instructions](https://support.apple.com/en-us/102445). Do not disable Gatekeeper globally or strip quarantine metadata.
+Download only from the official release referenced by the cask. If macOS prevents the first launch, review the project's [unsigned beta installation guidance](https://github.com/giacomobartoloni/mathboard/blob/main/docs/desktop/UNSIGNED_BETA.md) and [Apple's per-app instructions](https://support.apple.com/en-us/102445). Do not disable Gatekeeper globally. The optional quarantine-removal command above is less conservative than the project's security guide, which advises against removing quarantine attributes.
 
 Homebrew verifies the downloaded archive against the SHA-256 values pinned in [`Casks/mathboard.rb`](Casks/mathboard.rb). Checksums help detect changes to the artifact, but do not establish a verified publisher identity.
 
