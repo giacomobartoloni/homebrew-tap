@@ -1,0 +1,49 @@
+# MathBoard Homebrew Tap
+
+Homebrew cask for the [MathBoard](https://mathboard.app/) desktop application on macOS. It installs official DMG artifacts from [MathBoard GitHub Releases](https://github.com/giacomobartoloni/mathboard/releases).
+
+## Install
+
+```sh
+brew install --cask giacomobartoloni/tap/mathboard
+```
+
+The cask selects the appropriate DMG for Apple Silicon (`aarch64`) or Intel (`x64`), verifies its SHA-256 checksum, and installs `MathBoard.app` in the standard macOS Applications directory.
+
+## Update
+
+```sh
+brew update
+brew upgrade --cask giacomobartoloni/tap/mathboard
+```
+
+The cask version is maintained in this repository. An upstream release does not become available through Homebrew until the cask version and checksums are updated.
+
+## Uninstall
+
+```sh
+brew uninstall --cask giacomobartoloni/tap/mathboard
+```
+
+This tap does not define a `zap` action, so uninstalling will not intentionally delete your locally saved MathBoard boards or settings.
+
+## Security and public beta status
+
+MathBoard's current macOS desktop builds are **unsigned public betas**: they are not signed with an Apple Developer ID certificate and are not notarized by Apple. Installing via Homebrew does **not** change that trust status or bypass macOS Gatekeeper.
+
+Download only from the official release referenced by the cask. If macOS prevents the first launch, review the project's [unsigned beta installation guidance](https://github.com/giacomobartoloni/mathboard/blob/main/docs/desktop/UNSIGNED_BETA.md) and [Apple's per-app instructions](https://support.apple.com/en-us/102445). Do not disable Gatekeeper globally or strip quarantine metadata.
+
+Homebrew verifies the downloaded archive against the SHA-256 values pinned in [`Casks/mathboard.rb`](Casks/mathboard.rb). Checksums help detect changes to the artifact, but do not establish a verified publisher identity.
+
+## Maintaining the cask
+
+After a new public desktop release has been reviewed and published:
+
+1. Confirm the published tag follows `vMAJOR.MINOR.PATCH` and contains both `MathBoard_VERSION_aarch64.dmg` and `MathBoard_VERSION_x64.dmg`.
+2. Update `version` and the architecture-specific SHA-256 hashes in `Casks/mathboard.rb` using the **published** GitHub Release assets.
+3. Verify the URLs, hashes and cask syntax; on macOS, run `brew audit --cask giacomobartoloni/tap/mathboard` and test the installation.
+4. Commit the reviewed changes to this tap. Do not automatically publish draft releases, release candidates or unverified installers.
+
+MathBoard source code and release documentation: https://github.com/giacomobartoloni/mathboard
+
+Reference distribution approach: [NearDrop Homebrew tap](https://github.com/grishka/homebrew-grishka).
