@@ -3,9 +3,9 @@
 cask "mathboard" do
   arch arm: "aarch64", intel: "x64"
 
-  version "1.11.0"
-  sha256 arm:   "10042f938feaa9cdfe22bffeb90312472a53c026ee4a5b55fd7a75f1a4c995fd",
-         intel: "f41a89cb1b17568219407d07a5be1f4e9da38fccf3f5fd20e21e8ca4bf519d77"
+  version "1.12.0"
+  sha256 arm:   "438b4599b25356d4505a5a6fc9118aab5bb5c17e14a39771a2c8d8f82d27d696",
+         intel: "79bbc51ca66e57f901ba75f87511f844e7f5ae86fe27c81f8616682739857b9c"
 
   url "https://github.com/giacomobartoloni/mathboard/releases/download/v#{version}/MathBoard_#{version}_#{arch}.dmg"
   name "MathBoard"
