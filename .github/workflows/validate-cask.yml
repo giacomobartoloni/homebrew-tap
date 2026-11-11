@@ -29,6 +29,8 @@ jobs:
         run: |
           brew tap giacomobartoloni/tap
           cp Casks/mathboard.rb "$(brew --repository)/Library/Taps/giacomobartoloni/homebrew-tap/Casks/mathboard.rb"
+          # Trust only this cask on an ephemeral runner; the job has no secrets.
+          brew trust --cask giacomobartoloni/tap/mathboard
           brew audit --cask giacomobartoloni/tap/mathboard
 
       - name: Download and verify both macOS installers
