@@ -43,6 +43,30 @@ Download only from the official release referenced by the cask. If macOS prevent
 
 Homebrew verifies the downloaded archive against the SHA-256 values pinned in [`Casks/mathboard.rb`](Casks/mathboard.rb). Checksums help detect changes to the artifact, but do not establish a verified publisher identity.
 
+## Automated update pull requests
+
+An approved, published MathBoard desktop release can open or refresh a pull request
+against this tap's `main` branch. The upstream workflow runs in
+[`giacomobartoloni/mathboard`](https://github.com/giacomobartoloni/mathboard);
+it never merges a tap PR or publishes installers. The generated PR must update
+only `Casks/mathboard.rb`. Review the release, version, both architecture-specific
+SHA-256 hashes, unsigned-beta disclosures, and the CI results before merging.
+
+The `Validate MathBoard cask` pull-request workflow performs Ruby syntax
+validation and `brew audit --cask`, then downloads both published macOS DMGs and
+checks their actual SHA-256 hashes against the cask and official release manifest.
+A passing checksum check does **not** prove developer identity, notarization,
+or native installation/GUI acceptance on both Mac architectures. These checks
+are distinct from the desktop release's manual platform QA requirements.
+
+The workflow can be run manually from GitHub Actions to recheck the current cask.
+After a reviewed PR is merged, users can upgrade normally:
+
+```sh
+brew update
+brew upgrade --cask giacomobartoloni/tap/mathboard
+```
+
 ## Maintaining the cask
 
 After a new public desktop release has been reviewed and published:
