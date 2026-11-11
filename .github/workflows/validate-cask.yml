@@ -1,0 +1,32 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+name: Validate MathBoard cask
+
+on:
+  pull_request:
+    paths:
+      - 'Casks/mathboard.rb'
+      - 'scripts/verify-cask.sh'
+      - '.github/workflows/validate-cask.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Audit cask and verify both macOS DMGs
+    runs-on: macos-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+
+      - name: Check Ruby and shell syntax
+        run: |
+          ruby -c Casks/mathboard.rb
+          bash -n scripts/verify-cask.sh
+
+      - name: Homebrew cask audit
+        run: brew audit --cask ./Casks/mathboard.rb
+
+      - name: Download and verify both macOS installers
+        run: bash scripts/verify-cask.sh
