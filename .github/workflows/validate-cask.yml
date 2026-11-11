@@ -26,7 +26,10 @@ jobs:
           bash -n scripts/verify-cask.sh
 
       - name: Homebrew cask audit
-        run: brew audit --cask ./Casks/mathboard.rb
+        run: |
+          brew tap giacomobartoloni/tap
+          cp Casks/mathboard.rb "$(brew --repository)/Library/Taps/giacomobartoloni/homebrew-tap/Casks/mathboard.rb"
+          brew audit --cask giacomobartoloni/tap/mathboard
 
       - name: Download and verify both macOS installers
         run: bash scripts/verify-cask.sh
