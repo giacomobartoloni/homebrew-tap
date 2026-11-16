@@ -27,6 +27,8 @@ jobs:
           brew tap giacomobartoloni/tap
           mkdir -p "$(brew --repository)/Library/Taps/giacomobartoloni/homebrew-tap/Formula"
           cp Formula/awl.rb "$(brew --repository)/Library/Taps/giacomobartoloni/homebrew-tap/Formula/awl.rb"
+          # Trust this one formula only on the ephemeral runner; no secrets are used.
+          brew trust --formula giacomobartoloni/tap/awl
           brew audit --formula giacomobartoloni/tap/awl
           brew install --formula giacomobartoloni/tap/awl
           brew test giacomobartoloni/tap/awl
