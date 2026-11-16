@@ -1,0 +1,34 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+name: Validate awl formula
+
+on:
+  pull_request:
+    paths:
+      - 'Formula/awl.rb'
+      - '.github/workflows/validate-awl-formula.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Audit, install and test awl on macOS
+    runs-on: macos-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+
+      - name: Ruby syntax
+        run: ruby -c Formula/awl.rb
+
+      - name: Audit and test the formula
+        run: |
+          brew tap giacomobartoloni/tap
+          mkdir -p "$(brew --repository)/Library/Taps/giacomobartoloni/homebrew-tap/Formula"
+          cp Formula/awl.rb "$(brew --repository)/Library/Taps/giacomobartoloni/homebrew-tap/Formula/awl.rb"
+          # Trust this one formula only on the ephemeral runner; no secrets are used.
+          brew trust --formula giacomobartoloni/tap/awl
+          brew audit --formula giacomobartoloni/tap/awl
+          brew install --formula giacomobartoloni/tap/awl
+          brew test giacomobartoloni/tap/awl
