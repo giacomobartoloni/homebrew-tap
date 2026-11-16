@@ -1,8 +1,25 @@
-# MathBoard Homebrew Tap
+# Homebrew Tap
+
+Homebrew packages for [MathBoard](https://mathboard.app/) (macOS desktop cask) and [awl](https://github.com/giacomobartoloni/awl) (macOS/Linux CLI formula). Both use published assets from their respective official GitHub Releases.
+
+## Install awl (CLI)
+
+```sh
+brew install giacomobartoloni/tap/awl
+awl --version
+```
+
+The formula installs the official `v0.2.0` prebuilt CLI archive with a pinned SHA-256 digest. It selects the matching macOS or Linux archive for ARM64 or x86-64 and depends on the external Git executable used by `awl`. Go is not required to install the binary.
+
+`awl` is experimental; see the [CLI installation and safety notes](https://github.com/giacomobartoloni/awl/blob/main/docs/installation.md). The Homebrew formula does not certify every platform or operation.
+
+Update with `brew update && brew upgrade giacomobartoloni/tap/awl`, or uninstall with `brew uninstall giacomobartoloni/tap/awl`. Formula versions and checksums are updated in this tap after publishing and verifying an upstream release; the tap does not automatically track new tags.
+
+## MathBoard (macOS cask)
 
 Homebrew cask for the [MathBoard](https://mathboard.app/) desktop application on macOS. It installs official DMG artifacts from [MathBoard GitHub Releases](https://github.com/giacomobartoloni/mathboard/releases).
 
-## Install
+### Install MathBoard
 
 ```sh
 brew install --cask giacomobartoloni/tap/mathboard
@@ -18,7 +35,7 @@ sudo xattr -r -d com.apple.quarantine "/Applications/MathBoard.app"
 
 **Security note:** This command bypasses macOS quarantine-based checks for this app; it does not sign or notarize MathBoard. Do not use it for software you have not verified or on a device whose security policy prohibits it.
 
-## Update
+### Update MathBoard
 
 ```sh
 brew update
@@ -27,7 +44,7 @@ brew upgrade --cask giacomobartoloni/tap/mathboard
 
 The cask version is maintained in this repository. An upstream release does not become available through Homebrew until the cask version and checksums are updated.
 
-## Uninstall
+### Uninstall MathBoard
 
 ```sh
 brew uninstall --cask giacomobartoloni/tap/mathboard
