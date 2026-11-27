@@ -9,25 +9,25 @@ class Awl < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/giacomobartoloni/awl/releases/download/v0.2.0/awl_0.2.0_darwin_arm64.tar.gz"
-      sha256 "7a90f19e8b2d51d351ed5dbae112fbcef7798c766ab049e77464ce25ad278169"
+      url "https://github.com/giacomobartoloni/awl/releases/download/v0.3.0/awl_0.3.0_darwin_arm64.tar.gz"
+      sha256 "bd3665fe180a3996e31207cef61ef5d9b2e35160a148b38da511c241be26528f"
     end
 
     on_intel do
-      url "https://github.com/giacomobartoloni/awl/releases/download/v0.2.0/awl_0.2.0_darwin_amd64.tar.gz"
-      sha256 "2ed74ece8a120fe0c7279571f2b5988cc62133a87d92a2b0032aaa5b41d260b2"
+      url "https://github.com/giacomobartoloni/awl/releases/download/v0.3.0/awl_0.3.0_darwin_amd64.tar.gz"
+      sha256 "cbf170168aa2d3ebdd3e43ac1d31c947ddedee3db0bcf2054a8207e592db9cd4"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/giacomobartoloni/awl/releases/download/v0.2.0/awl_0.2.0_linux_arm64.tar.gz"
-      sha256 "9c71a8044746daab98027d22b0f07a5ce7f53911e0a9ce894372f5f4616f17bc"
+      url "https://github.com/giacomobartoloni/awl/releases/download/v0.3.0/awl_0.3.0_linux_arm64.tar.gz"
+      sha256 "5a879e4d62b7b6d8cb3567f05ce23fe7cd09ddc78842715e879da93ef5bd1677"
     end
 
     on_intel do
-      url "https://github.com/giacomobartoloni/awl/releases/download/v0.2.0/awl_0.2.0_linux_amd64.tar.gz"
-      sha256 "b85eaee3f6b76e62fd51cc60bf4427e2135911e59484566c8499d926d7334d9e"
+      url "https://github.com/giacomobartoloni/awl/releases/download/v0.3.0/awl_0.3.0_linux_amd64.tar.gz"
+      sha256 "a434b38a6eec89cfff8988092f2acd44f6354ae621aa8c5325aaefce40326ece"
     end
   end
 
