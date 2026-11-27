@@ -9,7 +9,7 @@ brew install giacomobartoloni/tap/awl
 awl --version
 ```
 
-The formula installs the official `v0.2.0` prebuilt CLI archive with a pinned SHA-256 digest. It selects the matching macOS or Linux archive for ARM64 or x86-64 and depends on the external Git executable used by `awl`. Go is not required to install the binary.
+The formula installs the official `v0.3.0` prebuilt CLI archive with a pinned SHA-256 digest. It selects the matching macOS or Linux archive for ARM64 or x86-64 and depends on the external Git executable used by `awl`. Go is not required to install the binary.
 
 `awl` is experimental; see the [CLI installation and safety notes](https://github.com/giacomobartoloni/awl/blob/main/docs/installation.md). The Homebrew formula does not certify every platform or operation.
 
